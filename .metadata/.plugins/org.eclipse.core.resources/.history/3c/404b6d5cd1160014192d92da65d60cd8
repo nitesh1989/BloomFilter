@@ -1,0 +1,23 @@
+/*
+ * kmers.cpp
+ *
+ *  Created on: Jul 27th, 2014
+ *      Author: niteshturaga
+ */
+
+#include <iostream>
+#include <string>
+
+#include "bloom_filter.hpp"
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main () {
+  ofstream myfile;
+  myfile.open ("example.txt");
+  myfile << "Writing this to a file.\n";
+  myfile.close();
+  return 0;
+}

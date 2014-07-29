@@ -1,0 +1,22 @@
+[6/18/14, 3:48:42 PM] benbo81: http://nbviewer.ipython.org/github/plsql/bioinformatics/blob/master/bloom-filter.ipynb
+[6/18/14, 3:49:20 PM] benbo81: https://github.com/ArashPartow/bloom
+[6/18/14, 3:50:11 PM] benbo81: https://code.google.com/p/bloom/
+
+Check weather the split-genome function is working as you expect.
+
+Goal: Filter the indexes to be looked up while aligning the reads.
+
+
+Steps:
+
+We have the Fastq file of all the chromosomes, broken genome indexes.
+
+1. Construct k-mers (20-mers) of reads. (Construct 20-mers of what? Fastq files??)
+
+2. Bloom filters, to hold k-mers which hold 
+
+What do we need to store in the Bloomfilter?
+-- Reads
+
+
+We need to filter reads from the genome in such a way, that we 

@@ -1,0 +1,11 @@
+/*
+ * kmers.cpp
+ *
+ *  Created on: Jul 27th, 2014
+ *      Author: niteshturaga
+ */
+
+#include <iostream>
+#include <string>
+
+#include "bloom_filter.hpp"

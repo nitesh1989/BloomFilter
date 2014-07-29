@@ -1,0 +1,33 @@
+/*
+ * kmers.cpp
+ *
+ *  Created on: Jul 27th, 2014
+ *      Author: niteshturaga
+ */
+
+// reading a text file
+#include <iostream>
+#include <fstream>
+#include <string>
+//#include "bloom_filter.hpp"
+
+using namespace std;
+
+int main () {
+  string line;
+  ifstream myfile ("/Users/niteshturaga/Documents/BenLangmeadResearch/CE_FMIndex/data/cElegansGenome/chrI.fa");
+
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )
+    {
+      cout << line << '\n';
+      break;
+    }
+    myfile.close();
+  }
+
+  else cout << "Unable to open file";
+
+  return 0;
+}
