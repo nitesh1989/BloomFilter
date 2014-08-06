@@ -11,7 +11,7 @@
 using namespace std;
 #include "bloom_filter.hpp"
 
-#define datafile "/Users/niteshturaga/Documents/BenLangmeadResearch/BloomFilter/data/chrI_1_kmerized.fa"
+#define datafile "/Users/niteshturaga/Documents/BenLangmeadResearch/BloomFilter/data/chrI_1.fa"
 
 // Function Prototypes
 void GetNextLine(ifstream& inFile, char *line, int lineLen);
@@ -57,35 +57,41 @@ int main(int argc, char **argv)
 	{
 		GetNextLine(inFile, str, strlen(str));
 		if(inFile.good()) {
-			//			cout << str << "\n";    // Print the line
+			cout << str << "\n";    // Print the line
 			filter.insert(str);
-			//			cout <<"Inserted into filter"<<endl;
+			cout <<"Inserted into filter"<<endl;
 		}
 		else{
 			break;
 		}// terminate the loop
 	} // end eternal while() loop
-	//	inFile.close();                        // Close the data file
+//	inFile.close();                        // Close the data file
 	cout << "\n\ndone...\n\n";
 
 
 	// Query Bloom Filter
-	// Query the existence of kmers in BF
+	// Query the existence of strings
 	cout << "Check existence in BF"<<endl;
-	std::string str_list[] = { "gcctaagcctaagcctaagc","cctaagcctaagcctaagcc","ctaagcctaagcctaagcct"};
-
-	for (std::size_t i = 0; i < 3; ++i)
+	while(true)
 	{
-		if (filter.contains(str_list[i]))
-		{
-			std::cout << "BF contains: " << str_list[i] << std::endl;
+		GetNextLine(inFile, str, strlen(str));
+		cout<<"here"<<endl;
+		if(inFile.good()) {
+			std::cout << "check BF for this : " << str << std::endl;
+			filter.contains(str);
+			std::cout << "BF contains: " << str << std::endl;
+			break;
 		}
-	}
+		else{
+			cout<<"else case"<<endl;
+			break;
+		}// terminate the loop
+	} // end eternal while() loop
+	inFile.close();                        // Close the data file
 
 	return 0;
 
 }
-
 
 
 /**************************************************************/

@@ -57,9 +57,9 @@ int main(int argc, char **argv)
 	{
 		GetNextLine(inFile, str, strlen(str));
 		if(inFile.good()) {
-			//			cout << str << "\n";    // Print the line
+			cout << str << "\n";    // Print the line
 			filter.insert(str);
-			//			cout <<"Inserted into filter"<<endl;
+			cout <<"Inserted into filter"<<endl;
 		}
 		else{
 			break;
@@ -70,22 +70,22 @@ int main(int argc, char **argv)
 
 
 	// Query Bloom Filter
-	// Query the existence of kmers in BF
+	// Query the existence of strings
 	cout << "Check existence in BF"<<endl;
 	std::string str_list[] = { "gcctaagcctaagcctaagc","cctaagcctaagcctaagcc","ctaagcctaagcctaagcct"};
-
-	for (std::size_t i = 0; i < 3; ++i)
+	for (std::size_t i = 0; i < 100; ++i)
 	{
-		if (filter.contains(str_list[i]))
+		if (filter.contains(i))
 		{
-			std::cout << "BF contains: " << str_list[i] << std::endl;
+			std::cout << "BF contains: " << i << std::endl;
 		}
 	}
+
+
 
 	return 0;
 
 }
-
 
 
 /**************************************************************/

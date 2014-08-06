@@ -57,9 +57,9 @@ int main(int argc, char **argv)
 	{
 		GetNextLine(inFile, str, strlen(str));
 		if(inFile.good()) {
-			//			cout << str << "\n";    // Print the line
+//			cout << str << "\n";    // Print the line
 			filter.insert(str);
-			//			cout <<"Inserted into filter"<<endl;
+//			cout <<"Inserted into filter"<<endl;
 		}
 		else{
 			break;
@@ -85,7 +85,6 @@ int main(int argc, char **argv)
 	return 0;
 
 }
-
 
 
 /**************************************************************/

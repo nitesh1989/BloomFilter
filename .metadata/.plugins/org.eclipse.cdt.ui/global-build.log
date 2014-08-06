@@ -1,8 +1,8 @@
-00:46:56 **** Clean-only build of configuration Debug for project Bloom-Test ****
+08:35:40 **** Clean-only build of configuration Debug for project Bloom-Test ****
 make clean 
 rm -rf  ./src/Bloom-Test.o  ./src/Bloom-Test.d  Bloom-Test
  
-00:47:11 **** Build of configuration Debug for project Bloom-Test ****
+08:35:46 **** Build of configuration Debug for project Bloom-Test ****
 make all 
 Building file: ../src/Bloom-Test.cpp
 Invoking: GCC C++ Compiler
@@ -14,11 +14,13 @@ Invoking: MacOS X C++ Linker
 g++  -o "Bloom-Test"  ./src/Bloom-Test.o   
 Finished building target: Bloom-Test
  
-00:47:45 **** Incremental Build of configuration Debug for project Bloom-Test ****
+08:36:21 **** Incremental Build of configuration Debug for project Bloom-Test ****
 make all 
-make: Nothing to be done for `all'.
-00:52:26 **** Incremental Build of configuration Debug for project Bloom-Test ****
-make all 
+Building file: ../src/Bloom-Test.cpp
+Invoking: GCC C++ Compiler
+g++ -I/Users/niteshturaga/Documents/BenLangmeadResearch/BloomFilter/bloom-read-only -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Bloom-Test.d" -MT"src/Bloom-Test.d" -o "src/Bloom-Test.o" "../src/Bloom-Test.cpp"
+Finished building: ../src/Bloom-Test.cpp
+ 
 Building target: Bloom-Test
 Invoking: MacOS X C++ Linker
 g++  -o "Bloom-Test"  ./src/Bloom-Test.o   
