@@ -7,8 +7,29 @@
 
 #include <iostream>
 #include <string>
-
+#include <fstream>
+using namespace std;
 #include "bloom_filter.hpp"
+
+//#define fp "/Users/niteshturaga/Documents/BenLangmeadResearch/BloomFilter/chr_all.fasta"
+
+int read_and_print (ifstream &fp) {
+  string line;
+  ifstream myfile (fp);
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )
+    {
+      cout << line << '\n';
+    }
+    myfile.close();
+  }
+
+  else cout << "Unable to open file";
+
+  return 0;
+}
+
 
 int main()
 {
@@ -85,4 +106,5 @@ int main()
    }
 
    return 0;
+
 }

@@ -1,4 +1,4 @@
-09:52:04 **** Incremental Build of configuration Debug for project Bloom-Test ****
+19:36:25 **** Build of configuration Debug for project Bloom-Test ****
 make all 
 Building file: ../src/Bloom-Test.cpp
 Invoking: GCC C++ Compiler
@@ -11,5 +11,5 @@ g++  -o "Bloom-Test"  ./src/Bloom-Test.o
 Finished building target: Bloom-Test
  
 
-09:52:05 Build Finished (took 820ms)
+19:36:26 Build Finished (took 765ms)
 

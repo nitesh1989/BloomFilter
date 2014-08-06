@@ -1,0 +1,99 @@
+//============================================================================
+// Name        : IO-Project.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+
+// Headers required for file I/O in C++
+#include <iostream>
+#include <fstream>
+// Headers required for both C and C++
+#include <string>
+
+using namespace std;
+
+#define datafile "/Users/niteshturaga/Documents/BenLangmeadResearch/BloomFilter/chr_all.fasta"
+
+// Function Prototypes
+void GetNextLine_CPP(ifstream& inFile, char *line, int lineLen);
+
+int main(int argc, char **argv)
+{
+
+    // Vars used in the C++ I/O demo
+    ifstream    inFile;        // Input file stream
+
+    // Vars used in both demonstrations
+    char    str[128];        // Character array to hold lines read from the file
+
+    //-----------------------------------------------------------------------
+    //                   Now we do the same thing in C++
+    //-----------------------------------------------------------------------
+    cout << "Demonstrating file I/O in C++\n";
+    cout << "Opening file...\n";
+
+    // Open the file for reading, checking to make sure it was successfully opened
+    inFile.open(datafile, ifstream::in);
+    if(!inFile.is_open())
+    {
+        // inFile.is_open() returns false if the file could not be found or
+        //    if for some other reason the open failed.
+        cout << "Unable to open file %s\nProgram terminating...\n";
+        return 0;
+    }
+
+    // File was successfully opened so call the C++ function to read
+    //        all lines from the file.
+    cout << "Printing lines in file...\n\n";
+    while(true)
+    {
+        GetNextLine_CPP(inFile, str, strlen(str));
+        if(inFile.good())
+            cout << str << "\n";    // Print the line
+        else
+            break;                    // terminate the loop
+
+    } // end eternal while() loop
+    fclose(inFile);                        // Close the data file
+    cout << "\n\ndone...\n\n";
+
+    return 0;
+}
+
+
+
+/**************************************************************/
+/* GetNextLine_CPP()                                          */
+/*                                                            */
+/* Purpose: Read a line from a data file.                     */
+/*  Language: C                                               */
+/* Args: inFile -- istream pointer                            */
+/*       line -- Character array to place the line in.        */
+/*       lineLen -- Length of the character array line.       */
+/* Returns: void                                              */
+/**************************************************************/
+void GetNextLine_CPP(ifstream& inFile, char *line, int lineLen)
+{
+    int    done = false;
+    while(!done)
+    {
+        inFile.getline(line, 128);
+
+        if(inFile.good())    // If a line was successfully read
+        {
+            if(strlen(line) == 0)  // Skip any blank lines
+                continue;
+            else if(line[0] == '#')  // Skip any comment lines
+                continue;
+            else done = true;    // Got a valid data line so return with this line
+        }
+        else
+        {
+            strcpy(line, "");
+            return;
+        }
+    } // end while
+}
