@@ -78,7 +78,6 @@ int main(int argc, char **argv)
 		{
 			filter.insert(str_list[i]);
 		}
-
 		// Insert some numbers
 		for (std::size_t i = 0; i < 100; ++i)
 		{
@@ -94,8 +93,8 @@ int main(int argc, char **argv)
 		{
 			if (filter.contains(str_list[i]))
 			{
-				//            std::cout << "BF contains: " << str_list[i] << std::endl;
-				//            std::cout << "BF count: " << i << std::endl;
+	            std::cout << "BF contains: " << str_list[i] << std::endl;
+	            std::cout << "BF count: " << i << std::endl;
 			}
 		}
 
@@ -104,7 +103,7 @@ int main(int argc, char **argv)
 		{
 			if (filter.contains(i))
 			{
-				//            std::cout << "BF contains: " << i << std::endl;
+		            std::cout << "BF contains: " << i << std::endl;
 			}
 		}
 
@@ -113,7 +112,7 @@ int main(int argc, char **argv)
 		{
 			if (filter.contains(i))
 			{
-				//            std::cout << "BF falsely contains: " << i << std::endl;
+	            std::cout << "BF falsely contains: " << i << std::endl;
 			}
 		}
 	}
@@ -124,10 +123,9 @@ int main(int argc, char **argv)
 
 
 /**************************************************************/
-/* GetNextLine()                                              */
+/* GetNextLine() - Wrapper function                           */
 /*                                                            */
 /* Purpose: Read a line from a data file.                     */
-/*  Language: C                                               */
 /* Args: inFile -- istream pointer                            */
 /*       line -- Character array to place the line in.        */
 /*       lineLen -- Length of the character array line.       */
