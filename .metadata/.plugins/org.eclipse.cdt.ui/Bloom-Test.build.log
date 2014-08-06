@@ -1,15 +1,10 @@
-19:36:25 **** Build of configuration Debug for project Bloom-Test ****
+00:52:26 **** Incremental Build of configuration Debug for project Bloom-Test ****
 make all 
-Building file: ../src/Bloom-Test.cpp
-Invoking: GCC C++ Compiler
-g++ -I/Users/niteshturaga/Documents/BenLangmeadResearch/BloomFilter/bloom-read-only -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Bloom-Test.d" -MT"src/Bloom-Test.d" -o "src/Bloom-Test.o" "../src/Bloom-Test.cpp"
-Finished building: ../src/Bloom-Test.cpp
- 
 Building target: Bloom-Test
 Invoking: MacOS X C++ Linker
 g++  -o "Bloom-Test"  ./src/Bloom-Test.o   
 Finished building target: Bloom-Test
  
 
-19:36:26 Build Finished (took 765ms)
+00:52:26 Build Finished (took 113ms)
 

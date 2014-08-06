@@ -27,8 +27,7 @@ int main(int argc, char **argv)
 	parameters.false_positive_probability = 0.001; // 1 in 10000
 	// Simple randomizer (optional)
 	parameters.random_seed = 0xA5A5A5A5;
-	if (!parameters)
-	{
+	if (!parameters) {
 		std::cout << "Error - Invalid set of bloom filter parameters!" << std::endl;
 		return 1;
 	}
@@ -43,7 +42,7 @@ int main(int argc, char **argv)
 	// Open the file for reading,
 	inFile.open(datafile, ifstream::in);
 
-//	TODO : Remove later
+	//	TODO : Remove later
 	// checking to make sure it was successfully opened
 	if(!inFile.is_open())
 	{
@@ -57,65 +56,38 @@ int main(int argc, char **argv)
 	while(true)
 	{
 		GetNextLine(inFile, str, strlen(str));
-		if(inFile.good())
+		if(inFile.good()) {
 			cout << str << "\n";    // Print the line
-		else
-			break;                    // terminate the loop
+			filter.insert(str);
+			cout <<"Inserted into filter"<<endl;
+		}
+		else{
+			break;
+		}// terminate the loop
 	} // end eternal while() loop
-	inFile.close();                        // Close the data file
+//	inFile.close();                        // Close the data file
 	cout << "\n\ndone...\n\n";
 
 
-	////////////////////////////
-	////////////////////////////
-
-	std::string str_list[] = { "AbC", "iJk", "XYZ" };
-
-	// Insert into Bloom Filter
-	{
-		// Insert some strings
-		for (std::size_t i = 0; i < (sizeof(str_list) / sizeof(std::string)); ++i)
-		{
-			filter.insert(str_list[i]);
-		}
-		// Insert some numbers
-		for (std::size_t i = 0; i < 100; ++i)
-		{
-			filter.insert(i);
-		}
-	}
-
-
 	// Query Bloom Filter
+	// Query the existence of strings
+	cout << "Check existence in BF"<<endl;
+	while(true)
 	{
-		// Query the existence of strings
-		for (std::size_t i = 0; i < (sizeof(str_list) / sizeof(std::string)); ++i)
-		{
-			if (filter.contains(str_list[i]))
-			{
-	            std::cout << "BF contains: " << str_list[i] << std::endl;
-	            std::cout << "BF count: " << i << std::endl;
-			}
+		GetNextLine(inFile, str, strlen(str));
+		cout<<"here"<<endl;
+		if(inFile.good()) {
+			std::cout << "check BF for this : " << str << std::endl;
+			filter.contains(str);
+			std::cout << "BF contains: " << str << std::endl;
+			break;
 		}
-
-		// Query the existence of numbers
-		for (std::size_t i = 0; i < 100; ++i)
-		{
-			if (filter.contains(i))
-			{
-		            std::cout << "BF contains: " << i << std::endl;
-			}
-		}
-
-		// Query the existence of invalid numbers
-		for (int i = -1; i > -100; --i)
-		{
-			if (filter.contains(i))
-			{
-	            std::cout << "BF falsely contains: " << i << std::endl;
-			}
-		}
-	}
+		else{
+			cout<<"else case"<<endl;
+			break;
+		}// terminate the loop
+	} // end eternal while() loop
+	inFile.close();                        // Close the data file
 
 	return 0;
 
@@ -137,7 +109,6 @@ void GetNextLine(ifstream& inFile, char *line, int lineLen)
 	while(!done)
 	{
 		inFile.getline(line, 128);
-
 		if(inFile.good())    // If a line was successfully read
 		{
 			if(strlen(line) == 0)  // Skip any blank lines
